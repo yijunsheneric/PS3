@@ -1,4 +1,6 @@
+
 package JunitTest;
+import static org.junit.Assert.*;
 
 
 import org.junit.After;
@@ -24,9 +26,9 @@ public class JunitTestOne {
 
 	@Before
 	public void setUp() throws Exception {
-		Test.setBalance(20000);
-		Test.setId(1122);
-		Test.setAnnualInterestRate(4.5);
+		Tester.setBalance(20000);
+		Tester.setId(1122);
+		Tester.setAnnualInterestRate(4.5);
 	}
 
 	@After
@@ -38,13 +40,13 @@ public class JunitTestOne {
 	@Test
 	public void testWithdrawTrue() {
 		try {
-			assertTrue(Test.withdraw(2500)==17500);
+			assertTrue(Tester.withdraw(2500)==17500);
 		} catch (InsufficientFundsException e) {
 			e.printStackTrace();
 		}
-		System.out.println(Test.getBalance());
-		System.out.println(Test.getAnnualInterestRate());
-		System.out.println(Test.getDateCreated());
+		System.out.println(Tester.getBalance());
+		System.out.println(Tester.getAnnualInterestRate());
+		System.out.println(Tester.getDateCreated());
 	}
 	
 	
@@ -52,30 +54,30 @@ public class JunitTestOne {
 	@Test
 	public void testWithdrawFalse() {
 		try {
-			assertFalse(Test.withdraw(2500)!=20000);
+			assertFalse(Tester.withdraw(2500)!=20000);
 		} catch (InsufficientFundsException e) {
 			e.printStackTrace();
 		}
-		System.out.println(Test.getBalance());
-		System.out.println(Test.getAnnualInterestRate());
-		System.out.println(Test.getDateCreated());
+		System.out.println(Tester.getBalance());
+		System.out.println(Tester.getAnnualInterestRate());
+		System.out.println(Tester.getDateCreated());
 	}
 	
 	
 	@Test(expected=InsufficientFundsException.class)
 	public void testOverDraw() throws InsufficientFundsException{
-		Test.withdraw(25000);
+		Tester.withdraw(25000);
 	}
 	
 	
 	//test deposit (true)
 		@Test
 		public void testDepositTrue() {
-				assertFalse(Test.deposit(3000)==23000);
+				assertFalse(Tester.deposit(3000)==23000);
 			
-			System.out.println(Test.getBalance());
-			System.out.println(Test.getAnnualInterestRate());
-			System.out.println(Test.getDateCreated());
+			System.out.println(Tester.getBalance());
+			System.out.println(Tester.getAnnualInterestRate());
+			System.out.println(Tester.getDateCreated());
 		}
 		
 
