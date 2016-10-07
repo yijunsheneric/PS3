@@ -4,78 +4,90 @@ import java.util.Date;
 
 public class Account {
 
-//	This Section present the variables to 
+//	This Section present the variables in the account class, and those variables
+//  would help the system gathering more information about customer. However, 
+//  those variables named by requirement in the instruction. 
 	
-	private int id; 
+	private int Identification; 
 	private double balance, annualInterestRate;
 	private Date dateCreated;
 		
-	
-	//Account Constructor
-	public Account(int identification, double startingbalance, double rate){
-		super(); // extends Object class
-		this.id=identification;
-		this.balance=startingbalance;
-		this.annualInterestRate=rate;
+	public Account(int Identification, double Startingbalance, double Rate){
+		super(); 
+		this.Identification=Identification;
+		this.balance=Startingbalance;
+		this.annualInterestRate=Rate;
 		this.dateCreated=new Date();
 	}
+
 	
-	//no-arg constructor that sets everything to 0
+// This part is to get the setting Id, getting Balance, setBalance, annualinterestrate 
+// and get date. 
+		
+		public void settingId(int id) {
+			this.Identification = id;
+		}
+
+		public double getBalance() {
+			return balance;
+		}
+
+		public void setBalance(double balance) {
+			this.balance = balance;
+		}
+
+		public double getAnnualInterestRate() {
+			return annualInterestRate;
+		}
+
+		public void setAnnualInterestRate(double annualInterestRate) {
+			this.annualInterestRate = annualInterestRate;
+		}
+
+		public Date getDateCreated() {
+			return dateCreated;
+		}
+	
+	
+	
+// This is the no-arg constructor that creates a default account according to the 
+// requirement in the instruction. 
+	
+	
 	public Account(){
 		this(0,0,0);
 	}
 	
-	//Account constructor that takes ID and balance, and sets rate = 0
-	public Account(int iD, double BALANCE){
-		this(iD,BALANCE,0);
+// In account,  we use this part to get initial information for the account. However,
+// we do set up the starting balance to zero. 
+	
+	public Account(int Identification, double balance){
+		this(Identification,balance,0);
 	}
+
 
 	
 	
-	//generates all getters and setters 
-	
-	public int getId() {
-		return id;
-	}
+// This section is to get the monthly interest rate. However, since we had the 
+// annual interest rate, we are going to use the annual interest rate to divide 12
+// in order to get the Monthly Interest Rate. 
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(double balance) {
-		this.balance = balance;
-	}
-
-	public double getAnnualInterestRate() {
-		return annualInterestRate;
-	}
-
-	public void setAnnualInterestRate(double annualInterestRate) {
-		this.annualInterestRate = annualInterestRate;
-	}
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-	
-	
-	
-	//getMonthlyInterestRate method
 	public double getMonthlyInterestRate(){
 		return this.annualInterestRate/12;
 	}
+
+// This section is going to get the balance by using the deposit amount of money. 
+
 	
-	//Deposit - returns remaining balance
 	public double deposit(double depositamount){
 		this.setBalance(this.getBalance()+ depositamount); 
 		return this.getBalance();
 	}
 	
-	//Withdraw - returns remaining balance
+// This section we were using deposit money and withdraw money to get the remanning 
+// balance. 
+	
+	
 	public double withdraw(double withdrawamount) throws InsufficientFundsException{
 		if(withdrawamount>this.getBalance()){
 			throw new InsufficientFundsException(withdrawamount-this.getBalance());

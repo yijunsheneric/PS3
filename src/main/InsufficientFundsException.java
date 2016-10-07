@@ -1,23 +1,20 @@
 package main;
 
-/**
- * Custom class for throwing an insufficient funds exception
- * @author Dad
- *
- */
+
+//This part is to indicate the exception for system to recognize if there is 
+//InsufficientFunds exists.
+
 public class InsufficientFundsException extends Exception
 {
-   private double amount;
-   /**
-    * Create an instance of the InsufficientFundsException class, to be thrown to the caller
-    * @param amount
-    */
-   public InsufficientFundsException(double amount)
+   private double amountMoney;
+  
+
+   public InsufficientFundsException(double amountMoney)
    {
-      this.amount = amount;
+      this.amountMoney = amountMoney;
    } 
-   public double getAmount()
+   public double getAmountMoney()
    {
-      return amount;
+      return amountMoney;
    }
 }

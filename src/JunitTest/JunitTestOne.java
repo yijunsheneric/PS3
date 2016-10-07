@@ -23,11 +23,15 @@ public class JunitTestOne {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
+	
+	
+//This test were using the exactly the same condition that required numbers. ID=1122, Balance= 20,000, annual Interest Rate 4.5% 
+//Withdraw $2500  Deposit Money = 3000
 
 	@Before
 	public void setUp() throws Exception {
 		Tester.setBalance(20000);
-		Tester.setId(1122);
+		Tester.settingId(1122);
 		Tester.setAnnualInterestRate(4.5);
 	}
 
@@ -36,7 +40,7 @@ public class JunitTestOne {
 	}
 	
 	
-	//test withdraw (true)
+	
 	@Test
 	public void testWithdrawTrue() {
 		try {
@@ -50,7 +54,7 @@ public class JunitTestOne {
 	}
 	
 	
-	//test withdraw (false)
+	
 	@Test
 	public void testWithdrawFalse() {
 		try {
@@ -70,7 +74,7 @@ public class JunitTestOne {
 	}
 	
 	
-	//test deposit (true)
+	
 		@Test
 		public void testDepositTrue() {
 				assertFalse(Tester.deposit(3000)==23000);
